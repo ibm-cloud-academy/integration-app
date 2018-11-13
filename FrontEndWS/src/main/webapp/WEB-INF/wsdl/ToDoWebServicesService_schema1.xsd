@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ws.ibmcloud.com/" version="1.0" xmlns:tns="http://ws.ibmcloud.com/">
+
+  <xs:element name="addToDo" type="tns:addToDo"/>
+
+  <xs:element name="addToDoResponse" type="tns:addToDoResponse"/>
+
+  <xs:element name="addUser" type="tns:addUser"/>
+
+  <xs:element name="addUserResponse" type="tns:addUserResponse"/>
+
+  <xs:element name="authUser" type="tns:authUser"/>
+
+  <xs:element name="authUserResponse" type="tns:authUserResponse"/>
+
+  <xs:element name="delToDo" type="tns:delToDo"/>
+
+  <xs:element name="delToDoResponse" type="tns:delToDoResponse"/>
+
+  <xs:element name="listToDo" type="tns:listToDo"/>
+
+  <xs:element name="listToDoResponse" type="tns:listToDoResponse"/>
+
+  <xs:complexType name="user">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="toDo">
+    <xs:sequence>
+      <xs:element name="id" type="xs:int"/>
+      <xs:element name="name" type="xs:string"/>
+      <xs:element minOccurs="0" name="category" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="operation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="message" type="xs:string"/>
+      <xs:element name="RC" type="xs:int"/>
+      <xs:element minOccurs="0" name="result" type="xs:anyType"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="results" nillable="true" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:operation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listToDo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="listToDoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:operation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addToDo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="addToDoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:operation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authUser">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg1" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="authUserResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:operation"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delToDo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      <xs:element name="arg1" type="xs:int"/>
+      <xs:element minOccurs="0" name="arg2" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg3" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="delToDoResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:operation"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
