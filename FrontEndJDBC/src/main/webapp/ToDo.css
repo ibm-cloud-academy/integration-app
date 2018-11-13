@@ -1,0 +1,30 @@
+@CHARSET "ISO-8859-1";
+
+#AppTitle {
+     background-color: gold;
+     text-align: center;
+     padding: 12px;
+     font-family: sans-serif;
+     font-size: xx-large;
+}
+
+#AppBody {
+     background-color: peach;
+     text-align: left;
+     padding: 1px;
+     font-family: sans-serif;
+     font-size: medium;
+}
+
+#AppMsg {
+     background-color: peach;
+     text-color: red;
+     text-align: left;
+     padding: 0px;
+     font-family: monospace;
+     font-size: small;
+}
+
+#addForm {
+	border: 1px;
+}
