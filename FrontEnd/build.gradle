@@ -1,0 +1,43 @@
+apply plugin: 'ear'
+apply plugin: 'liberty'
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.4'
+    }
+}
+
+archivesBaseName = 'FrontEnd'
+
+repositories {
+     mavenCentral()
+}
+
+ear {
+  manifest {
+    attributes 'Implementation-Title': 'FrontEnd'
+  }
+  archiveName="$baseName.$extension"
+}
+
+liberty {
+    server{
+        configFile = file("src/main/wlp/server.xml")
+        apps = [file(ear.archivePath)]
+     }
+}
+
+dependencies {
+   deploy project (path: ':FrontEndSelector', configuration: 'archives')
+   deploy project (path: ':FrontEndJDBC', configuration: 'archives')
+   deploy project (path: ':FrontEndJMS', configuration: 'archives')
+   deploy project (path: ':FrontEndREST', configuration: 'archives')
+   deploy project (path: ':FrontEndWS', configuration: 'archives')
+}
+
+libertyStart.finalizedBy 'printMessageAboutRunningServer'
+
