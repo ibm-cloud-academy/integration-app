@@ -22,24 +22,11 @@ repositories {
 }
 
 ext {
-    // Liberty server properties
-    serverDirectory = "${project.buildDir}/wlp/usr/servers/defaultServer"
-    testServerHttpPort = 9080
-    testServerHttpsPort = 9443
-
     // This is set in the ibm-web-ext.xml file
     warContext = 'ToDoList'
 }
 war {
     archiveName = baseName + '.' + extension
-}
-
-liberty {
-    server{
-        configFile = file("src/main/wlp/server.xml")
-        bootstrapProperties = ['appLocation': war.baseName]
-        apps = [war]
-     }
 }
 
 dependencies {
@@ -50,6 +37,3 @@ dependencies {
     providedCompile group: 'javax.jws', name: 'javax.jws-api', version:'1.1'
     libertyRuntime group: 'com.ibm.websphere.appserver.runtime', name: 'wlp-javaee7', version: '17.0.0.2'
 }
-
-libertyStart.finalizedBy 'printMessageAboutRunningServer'
-
