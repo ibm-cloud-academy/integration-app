@@ -5,6 +5,18 @@
 
     <httpEndpoint id="defaultHttpEndpoint" host="*" httpPort="9080" httpsPort="9443" />
 
+    <dataSource id="postgreSQL" jndiName="jdbc/postgreSQL" type="javax.sql.XADataSource">
+      <properties databaseName="postgres" serverName="________________" portNumber="_____" user="postgres" password="passw0rd">
+      </properties>
+      <jdbcDriver javax.sql.XADataSource="org.postgresql.xa.PGXADataSource">
+        <library name="postgreSQLJDBC">
+          <fileset id="postgrelib" dir="lib" includes="postgre*">
+          </fileset>
+        </library>
+      </jdbcDriver>
+
+    </dataSource>
+
     <applicationManager autoExpand="true"/>
     <keyStore password="passw0rd"></keyStore>
     <application name="FrontEnd" context-root="/" type="ear" location="FrontEnd.ear"/>
